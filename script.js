@@ -17,3 +17,8 @@ async function sendMessage() {
     chatBox.innerHTML += `<div class="bot-msg">${data.response}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
   }
+  document.getElementById("user-input").addEventListener("keypress",function(e){
+    if(e.key==="Enter"){
+      sendMessage();
+    }
+  });
