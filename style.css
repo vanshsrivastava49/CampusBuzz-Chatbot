@@ -1,0 +1,125 @@
+body {
+  font-family: "Special Gothic Condensed One", sans-serif;
+  font-style: normal;
+  background: #ecebeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.6; /* adjust as needed */
+  pointer-events: none; /* allows interaction with chat UI */
+}
+.chat-container {
+  background: rgba(255, 255, 255, 0.9); /* Adjust opacity here */
+  backdrop-filter: blur(2px);
+  background: #ededed;
+  width: 70%;
+  height: 90%;
+  margin-right: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: -15px;
+}
+h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 40px;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 600;
+  background: linear-gradient(to right, #5a64f1, #7b8aff);
+  color: #fff;
+  margin: 0;
+}
+#chat-box {
+  padding: 15px;
+  height: 500px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+.user-msg {
+  margin-bottom: 10px;
+  align-self: flex-end;
+  background-color: #b7b7b7;
+  padding: 8px;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  max-width: 80%;
+  font-weight:lighter;
+  font-size: 16px;
+}
+.bot-msg {
+  margin-bottom: 10px;
+  align-self: flex-start; 
+  background-color: #5c67f2;
+  padding: 8px;
+  color: #fff;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  max-width: 80%;
+  font-weight:lighter;
+  font-size:16px;
+}
+.input-container {
+  display: flex;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+#user-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-optical-sizing: auto;
+  font-style: normal;
+  border-radius: 30px;
+}
+button {
+  padding: 8px 12px;
+  background: linear-gradient(to right, #5a64f1, #7b8aff);
+  color: white;
+  font-family: "Dosis", sans-serif;
+  font-weight:600;
+  font-optical-sizing: auto;
+  font-style: normal;
+  border: none;
+  cursor: pointer;
+  width:50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-left: 5px;
+}
+.btnimg{
+  display: flex;
+  height: 22px;
+  align-items: center;
+  justify-items: center;
+  margin-left: -4px;
+  margin-top: -2px;
+}
+.note-text {
+  font-size: 14px;
+  color: #555;
+  margin-top: 2px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
