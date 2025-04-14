@@ -8,6 +8,7 @@ body {
   height: 100vh;
   min-width: 100vw;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .bg-video {
   position: fixed;
@@ -17,11 +18,11 @@ body {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.6; /* adjust as needed */
-  pointer-events: none; /* allows interaction with chat UI */
+  opacity: 0.6;
+  pointer-events: none; 
 }
 .chat-container {
-  background: rgba(255, 255, 255, 0.9); /* Adjust opacity here */
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(2px);
   background: #ededed;
   width: 70%;
@@ -31,7 +32,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin-top: -15px;
+  margin-top: 10px;
 }
 h1 {
   text-align: center;
