@@ -7,18 +7,24 @@ async function sendMessage() {
     chatBox.innerHTML += `<div class="user-msg">${message}</div>`;
     userInput.value = "";
 
-    const response = await fetch("http://127.0.0.1:5000/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message })
-    });
+    try {
+        // Replace with the deployed backend URL
+        const response = await fetch("https://your-backend-app.onrender.com/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message })
+        });
 
-    const data = await response.json();
-    chatBox.innerHTML += `<div class="bot-msg">${data.response}</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-  document.getElementById("user-input").addEventListener("keypress",function(e){
-    if(e.key==="Enter"){
-      sendMessage();
+        const data = await response.json();
+        chatBox.innerHTML += `<div class="bot-msg">${data.response}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    } catch (error) {
+        console.error('Error:', error);
     }
-  });
+}
+
+document.getElementById("user-input").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        sendMessage();
+    }
+});
