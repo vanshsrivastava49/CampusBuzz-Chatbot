@@ -9,7 +9,7 @@ async function sendMessage() {
 
     try {
         // Replace with the deployed backend URL
-        const response = await fetch("https://your-backend-app.onrender.com/chat", {
+        const response = await fetch("https://campusbuzz-chatbot.onrender.com/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message })
