@@ -9,20 +9,32 @@ import google.generativeai as genai
 load_dotenv()
 app = Flask(__name__)
 CORS(app)
+
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=GEMINI_API_KEY)
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=GEMINI_API_KEY)
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
-mongo_client = MongoClient(MONGO_URI)   
-db = mongo_client["CampusBuzz"]
-clubs_collection = db["clubs"]
-queries_collection = db["queries"]
+
+MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://ghapla:Luck0409@cluster0.mongodb.net/CampusBuzz?retryWrites=true&w=majority&ssl=true")
+
+try:
+    mongo_client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=30000)
+    db = mongo_client["CampusBuzz"]
+    clubs_collection = db["clubs"]
+    queries_collection = db["queries"]
+    print("MongoDB connected successfully.")
+except Exception as e:
+    print(f"Error connecting to MongoDB: {e}")
+    mongo_client = None
 
 def get_all_clubs():
-    return [f"{club['club_name']}: {club['description']}" for club in clubs_collection.find()]
+    if mongo_client:
+        return [f"{club['club_name']}: {club['description']}" for club in clubs_collection.find()]
+    return []
 
 def get_all_queries():
-    return [f"{q['question']}:{q['keywords']}: {q['answer']}" for q in queries_collection.find()]
+    if mongo_client:
+        return [f"{q['question']}:{q['keywords']}: {q['answer']}" for q in queries_collection.find()]
+    return []
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -37,14 +49,17 @@ def chat():
 
     if not club_context and not faq_context:
         return jsonify({"response": "No data found in the system."})
-    context = f"""CLUB INFORMATION:\n{chr(10).join(club_context)}\n\nFREQUENTLY ASKED QUESTIONS:\n{chr(10).join(faq_context)}"""
-    prompt = f"""
-You are a helpful campus assistant chatbot named CampusBuzz. Use the provided context to answer the user's query in a clear and concise way.
-{context}
-User Query: {query}
 
-Do not repeat the user question. Only respond with the helpful information from context.
-"""
+    context = f"""CLUB INFORMATION:\n{chr(10).join(club_context)}\n\nFREQUENTLY ASKED QUESTIONS:\n{chr(10).join(faq_context)}"""
+    
+    prompt = f"""
+    You are a helpful campus assistant chatbot named CampusBuzz. Use the provided context to answer the user's query in a clear and concise way.
+    {context}
+    User Query: {query}
+
+    Do not repeat the user question. Only respond with the helpful information from context.
+    """
+    
     try:
         response = llm.invoke(prompt)
         return jsonify({"response": response.content if hasattr(response, "content") else str(response)})
