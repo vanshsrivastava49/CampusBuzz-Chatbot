@@ -135,7 +135,7 @@ button {
   }
 
   h1 {
-    font-size: 50px;
+    font-size: 80px;
     padding: 8px;
   }
 .bg-video {
@@ -153,7 +153,7 @@ button {
     align-items: center;
   }
   #user-input {
-    font-size: 20px;
+    font-size: 24px;
   }
   button {
     width: 50px;
@@ -161,8 +161,11 @@ button {
   }
   .user-msg,
   .bot-msg {
-    font-size: 20px;
+    font-size: 24px;
     max-width: 90%;
     font-weight: 700;
+  }
+  .note-text{
+    font-size: 16px;
   }
 }
