@@ -131,14 +131,13 @@ button {
 }
 @media (orientation: portrait) {
   .chat-container {
-    margin-top: -300px;
     width: 90%;
-    height: 60%;
+    height: 80%;
     max-height: 800px;
     overflow-y: hidden;
   }
   h1 {
-    font-size: 40px;
+    font-size: 35px;
     padding: 8px;
   }
   .bg-video {
@@ -151,19 +150,23 @@ button {
     align-items: center;
   }
   #user-input {
-    font-size: 20px;
+    font-size: 14px;
   }
   button {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
+  }
+  .btnimg{
+    width: 28px;
+    margin-left: -8px;
   }
   .user-msg, .bot-msg {
-    font-size: 20px;
+    font-size: 16px;
     max-width: 90%;
     font-weight: 500;
   }
   .note-text {
-    font-size: 16px;
+    font-size: 9px;
   }
   .loading-indicator{
     font-size: 16px;
