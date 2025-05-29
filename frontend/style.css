@@ -7,8 +7,7 @@ body {
   align-items: center;
   height: 100vh;
   min-width: 100vw;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 .bg-video {
   position: fixed;
@@ -19,7 +18,7 @@ body {
   object-fit: cover;
   z-index: -1;
   opacity: 0.6;
-  pointer-events: none; 
+  pointer-events: none;
 }
 .chat-container {
   background: rgba(255, 255, 255, 0.9);
@@ -39,8 +38,6 @@ h1 {
   padding: 10px;
   font-size: 40px;
   font-family: "Dosis", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
   font-weight: 600;
   background: linear-gradient(to right, #5a64f1, #7b8aff);
   color: #fff;
@@ -62,27 +59,25 @@ h1 {
   font-family: "Roboto", sans-serif;
   border-radius: 5px;
   max-width: 80%;
-  font-weight:lighter;
+  font-weight: lighter;
   font-size: 16px;
 }
 .bot-msg {
   margin-bottom: 10px;
-  align-self: flex-start; 
+  align-self: flex-start;
   background-color: #5c67f2;
   padding: 8px;
   color: #fff;
   border-radius: 5px;
   font-family: "Roboto", sans-serif;
   max-width: 80%;
-  font-weight:lighter;
-  font-size:16px;
+  font-weight: lighter;
+  font-size: 16px;
 }
 .input-container {
   display: flex;
   padding: 10px;
   font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
 #user-input {
   flex: 1;
@@ -90,30 +85,27 @@ h1 {
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-optical-sizing: auto;
-  font-style: normal;
   border-radius: 30px;
+  border: 1px solid #ccc;
+  outline: none;
 }
 button {
   padding: 8px 12px;
   background: linear-gradient(to right, #5a64f1, #7b8aff);
   color: white;
   font-family: "Dosis", sans-serif;
-  font-weight:600;
-  font-optical-sizing: auto;
-  font-style: normal;
+  font-weight: 600;
   border: none;
   cursor: pointer;
-  width:50px;
+  width: 50px;
   height: 50px;
   border-radius: 100%;
   margin-left: 5px;
 }
-.btnimg{
+.btnimg {
   display: flex;
   height: 22px;
   align-items: center;
-  justify-items: center;
   margin-left: -4px;
   margin-top: -2px;
 }
@@ -125,66 +117,52 @@ button {
   text-align: center;
 }
 .loading-indicator {
-  text-align: left;
-  color: #fff;
+  padding: 0 15px;
+  font-size: 14px;
   font-style: italic;
-  margin: 10px 0;
-  font-family: 'Special Gothic Condensed One', sans-serif;
+  font-family: "Roboto", sans-serif;
+  color: #555;
+  margin-bottom: 10px;
 }
-
-.dots::after {
-  content: '';
-  animation: dots 1.5s steps(3, end) infinite;
+#typing-dots {
+  display: inline-block;
+  width: 20px;
+  text-align: left;
 }
-
-@keyframes dots {
-  0% { content: ''; }
-  33% { content: '.'; }
-  66% { content: '..'; }
-  100% { content: '...'; }
-}
-
 @media (orientation: portrait) {
   .chat-container {
-    margin-top:-300px;
+    margin-top: -300px;
     width: 90%;
     height: 60%;
     max-height: 800px;
     overflow-y: hidden;
   }
-
   h1 {
-    font-size: 80px;
+    font-size: 40px;
     padding: 8px;
   }
-.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit:inherit;
-  z-index: -1;
-  pointer-events: none; 
-}
+  .bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit:fill;
+  }
   .input-container {
     flex-direction: row;
     align-items: center;
   }
   #user-input {
-    font-size: 24px;
+    font-size: 20px;
   }
   button {
     width: 50px;
     height: 50px;
   }
-  .user-msg,
-  .bot-msg {
-    font-size: 24px;
+  .user-msg, .bot-msg {
+    font-size: 20px;
     max-width: 90%;
-    font-weight: 700;
+    font-weight: 500;
   }
-  .note-text{
+  .note-text {
     font-size: 16px;
   }
 }
