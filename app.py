@@ -12,7 +12,7 @@ CORS(app)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
 genai.configure(api_key=GEMINI_API_KEY)
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=GEMINI_API_KEY)
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GEMINI_API_KEY)
 try:
     mongo_client = MongoClient(MONGO_URI)
     db = mongo_client["CampusBuzz"]
